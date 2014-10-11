@@ -24,7 +24,7 @@ Usage:
 	rm -rf .git
 	rm -rf submodules/watchface-gears
 	git init
-	git submodule add git@github.com:twotoasters/watchface-gears.git submodules/watchface-gears
+	git submodule add https://github.com/twotoasters/watchface-gears.git submodules/watchface-gears
 	```
 
 - Start implementing your watchface in the `wear` module's `Watchface` class
