@@ -30,19 +30,26 @@ public class Watchface extends FrameLayout implements IWatchface {
 
     private boolean mInflated;
     private boolean mActive;
+    
+    private Context mCtx;
+    private Typeface mCustomFont;
+    private TextView mDate;
 
     public Watchface(Context context) {
         super(context);
+        mCtx = context;
         init(context, null, 0);
     }
 
     public Watchface(Context context, AttributeSet attrs) {
         super(context, attrs);
+        mCtx = context;
         init(context, attrs, 0);
     }
 
     public Watchface(Context context, AttributeSet attrs, int defStyle) {
         super(context, attrs, defStyle);
+        mCtx = context;
         init(context, attrs, defStyle);
     }
 
@@ -57,6 +64,9 @@ public class Watchface extends FrameLayout implements IWatchface {
         super.onFinishInflate();
         ButterKnife.inject(this, getRootView());
         mInflated = true;
+        mDate = (TextView) findViewById(R.id.date);
+        mCustomFont = Typeface.createFromAsset(mCtx.getAssets(), "MYFONT.ttf");
+        mDate.setTypeface(mCustomFont);
     }
 
     @DebugLog
